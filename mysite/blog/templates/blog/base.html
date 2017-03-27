@@ -1,0 +1,182 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Meu Blog</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+        <link rel="shortcut icon" href="{% static 'img/rosa-vermelha.jpg' %}" type="image/x-icon" />
+    </head>
+
+    <style type="text/css">
+        .fundo-preto{
+            background-color: #101010;
+            padding-top: 5px;
+            padding-bottom: 7px;
+        }
+        .cor-footer{
+            color: #fafafa;
+        }
+        .texto-sombra{
+            text-shadow: 2px 2px #101010;
+        }
+        .page-header ul {
+            list-style: none;
+        }
+        body{
+            font-family: 'Open Sans', sans-serif !important;
+        }
+        body, h1, h2, h3, h4, a, li{
+            font-family: 'Open Sans', sans-serif !important;
+        }
+        .navbar a, li {
+            color: #fff;
+        }
+    </style>
+
+    <body>
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand scroll" href="{% url 'blog:post_list' %}">Meu blog pessoal</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'accounts:login' %}">Logar</a></li>
+                        <li><a href="{% url 'blog:post_new' %}">Novo Texto</a></li>
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+        
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+                <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <!-- Page Content -->
+    <div class="container">
+
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <hr>
+
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Blog Sidebar Widgets Column -->
+    </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row fundo-preto">
+                <div class="container">
+                    <div class="col-lg-12">
+                        <div class="col-lg-6">
+                            <h2 class="cor-footer text-left">#SOUEJECT</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <h2 class="cor-footer text-right">Copyright &copy; Gabriel {{ hora }}</h2>
+                        </div>
+                    </div>
+                <!-- /.col-lg-12 -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) { 
+            $(".scroll").click(function(event){        
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top}, 800);
+           });
+        });
+    </script>
+    </body>
+</html>

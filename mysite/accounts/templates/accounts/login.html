@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Informe seus dados de cadastro</h1>
+    
+    <br/>
+    <br/>
+    <br/>
+    
+    <form method="POST">
+    {% csrf_token %}
+        <div style="color: red">
+            {{ form.non_field_errors }}
+        </div>
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            <div style="color: red;">
+                {{ field.errors }}
+            </div>
+        </div>
+        {% endfor %}
+        <button class="btn btn-info btn-large">Entrar</button>
+
+        <br/>
+        <br/>
+
+        <p>Não é cadastrado? <a href="{% url 'accounts:register' %}">Cadastre-se</a></p>
+        <p>Esqueceu a senha? <a href="">Nova senha</a></p>
+    </form>
+{% endblock %}
