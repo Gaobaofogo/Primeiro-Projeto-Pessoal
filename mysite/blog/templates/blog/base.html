@@ -51,7 +51,12 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'accounts:login' %}">Logar</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
+                        {% else %}
+                        <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
+                        {% endif %}
+                        <li><a href=""></a></li>
                         <li><a href="{% url 'blog:post_new' %}">Novo Texto</a></li>
                     </ul>
                 </div>
